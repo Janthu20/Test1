@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isuru Wijerathna | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            --primary: #0984e3;      /* Electric Blue */
+            --primary-dark: #074e85;
+            --bg-color: #f7f9fc;     /* Very light grey/white */
+            --glass: rgba(255, 255, 255, 0.85);
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --font-head: 'Orbitron', sans-serif; /* Sci-Fi Header Font */
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.4s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- 2. UTILITY CLASSES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 100px 0; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Heading Styles */
+        h2 {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        /* --- 3. NAVIGATION (GLASSMORPHISM) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        .nav-links a::before {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary); transition: width 0.3s;
+        }
+        .nav-links a:hover::before { width: 100%; }
+
+        /* --- 4. HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 80% 20%, rgba(9, 132, 227, 0.08) 0%, transparent 40%);
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-head);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(9, 132, 227, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+        /* --- 5. ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+        .role-list li {
+            list-style: none;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .role-list i { color: var(--primary); }
+
+        /* --- 6. SKILLS SECTION --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .skill-category h3 { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: #f1f2f6;
+            color: var(--text-main);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .tag:hover { background: var(--primary); color: white; }
+
+        /* --- 7. PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        .project-content { padding: 25px; }
+        .project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .project-desc { font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; }
+        .tech-stack {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 8. CONTACT SECTION --- */
+        #contact { background: #2d3436; color: white; position: relative; }
+        #contact h2 { color: white; }
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 20px; }
+        .contact-details p { margin-bottom: 15px; display: flex; items: center; gap: 10px; }
+        .social-icons { margin-top: 30px; display: flex; gap: 15px; }
+        .social-btn {
+            width: 45px; height: 45px;
+            background: rgba(255,255,255,0.1);
+            display: flex; justify-content: center; align-items: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-btn:hover { background: var(--primary); transform: scale(1.1); }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 5px;
+            font-family: var(--font-body);
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified mobile nav for demo */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">ISURU <span>WIJERATHNA</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container hero-text reveal active">
+            <h4 style="color: var(--primary); font-weight:700; letter-spacing:2px; margin-bottom:10px;">HELLO, I AM</h4>
+            <h1>Mechatronics<br>Engineering Student</h1>
+            <div class="subtitle">
+                Mechanical Undergraduate | Designing Intelligent Automation & IoT Solutions.
+            </div>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid reveal">
+                <div style="background: #e1e1e1; height: 300px; border-radius: 10px; display:flex; align-items:center; justify-content:center; color:#999;">
+                    <i class="fas fa-user-astronaut fa-5x"></i>
+                    </div>
+                
+                <div class="about-card">
+                    <h3 style="margin-bottom: 20px;">BSc. Hons Mechanical Engineering</h3>
+                    <ul class="role-list">
+                        <li><i class="fas fa-check-circle"></i> Member - Peradeniya Engineering Student Union 2025</li>
+                        <li><i class="fas fa-check-circle"></i> Mechanical Engineering Batch Representative 2026</li>
+                        <li><i class="fas fa-check-circle"></i> Batch Representative E20</li>
+                    </ul>
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        Passionate about bridging the gap between mechanics and electronics. My focus is on Industrial Automation, PLC programming, and integrating IoT solutions to solve real-world engineering problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding" style="background: #fff;">
+        <div class="container">
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid reveal">
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code" style="color:var(--primary)"></i> Engineering Software</h3>
+                    <div class="skill-tags">
+                        <span class="tag">SolidWorks</span>
+                        <span class="tag">Ansys</span>
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">MATLAB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-industry" style="color:var(--primary)"></i> Industrial Automation</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Xinje PLC</span>
+                        <span class="tag">Siemens PLC</span>
+                        <span class="tag">Pneumatics</span>
+                        <span class="tag">Hydraulics</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-microchip" style="color:var(--primary)"></i> IoT & Robotics</h3>
+                    <div class="skill-tags">
+                        <span class="tag">ESP32</span>
+                        <span class="tag">Arduino</span>
+                        <span class="tag">Python (OpenCV)</span>
+                        <span class="tag">Circuit Design</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid reveal">
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Yoghurt Filling Automation</div>
+                        <p class="project-desc">Automated a manual filling process using Xinje PLC. Improved system reliability and gained hands-on experience in advanced pneumatic logic.</p>
+                        <div class="tech-stack">Xinje PLC • Pneumatics • Automation</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Oil Level Monitoring System</div>
+                        <p class="project-desc">Developed at LTL Transformers (Angulana). An IoT system to monitor oil levels in 4 tanks and operate filling valves automatically.</p>
+                        <div class="tech-stack">IoT • ESP32 • Valve Control</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Remote Roller Door Controller</div>
+                        <p class="project-desc">Designed a custom receiver unit for remote roller door operation using RF technology and custom circuitry.</p>
+                        <div class="tech-stack">RF Tech • PCB Design • Electronics</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Transformer Winding Arm</div>
+                        <p class="project-desc">Design and fabrication of a wire tensioning arm for a transformer winding machine to improve winding precision.</p>
+                        <div class="tech-stack">SolidWorks • Fabrication • Design</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="contact-container reveal">
+                
+                <div class="contact-info">
+                    <h3>Wijerathna E.M.I.U.</h3>
+                    <p style="opacity: 0.8; margin-bottom: 30px;">Let's build the future of automation together.</p>
+                    
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> your.email@example.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Faculty of Engineering, University of Peradeniya</p>
+                    </div>
+
+                    <div class="social-icons">
+                        <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/" target="_blank" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="form-wrapper">
+                    <form class="contact-form" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea rows="5" placeholder="How can I help you?" required></textarea>
+                        <button type="submit" class="btn" style="width: 100%; border:none;">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #222; color: #777; padding: 20px; text-align: center; font-size: 0.8rem;">
+        <p>&copy; 2026 Isuru Wijerathna. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+                else{
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+
+        // Trigger once on load
+        reveal();
+    </script>
+
+</body>
+</html>
