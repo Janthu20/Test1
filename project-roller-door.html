@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Coil Actuator | Isuru Wijerathna</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES (Matches Main Site) --- */
+        :root {
+            --primary: #0984e3;      
+            --bg-color: #f7f9fc;    
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --font-head: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER & NAV */
+        header { background: white; padding: 20px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .back-btn { text-decoration: none; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .back-btn:hover { color: var(--primary); transform: translateX(-5px); }
+
+        /* HERO SECTION */
+        .project-hero { background: white; padding: 60px 0; border-bottom: 1px solid rgba(0,0,0,0.05); text-align: center; }
+        h1 { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 15px; }
+        .tech-tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .tag { background: rgba(9, 132, 227, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+
+        /* CONTENT LAYOUT */
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; padding: 60px 0; }
+        
+        /* Left Side: Story */
+        h2 { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); border-left: 4px solid var(--primary); padding-left: 15px; }
+        p { margin-bottom: 20px; color: var(--text-light); font-size: 1.05rem; }
+        
+        /* Right Side: Specs Box */
+        .specs-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: fit-content; }
+        .specs-list { list-style: none; }
+        .specs-list li { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .specs-list strong { display: block; color: var(--text-main); font-size: 0.9rem; }
+        .specs-list span { color: var(--text-light); font-size: 0.9rem; }
+
+        /* GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding-bottom: 80px; }
+        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .gallery-img:hover { transform: scale(1.02); border-color: var(--primary); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div style="font-weight: 700;">PROJECT DETAILS</div>
+        </div>
+    </header>
+
+    <section class="project-hero">
+        <div class="container">
+            <h1>Voice Coil Actuator Design</h1> 
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-light);">
+                A research-based approach to designing high-precision actuators for medical ventilator flow control valves.
+            </p>
+            <div class="tech-tags">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">Magnetic Simulation</span>
+                <span class="tag">Medical Engineering</span>
+                <span class="tag">Research</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container content-grid">
+        
+        <div class="main-content">
+            <h2>Project Overview</h2>
+            <p>
+                The objective of this project is to design a Voice Coil Actuator (VCA) capable of precise linear motion control for a ventilator valve. Unlike solenoid valves, VCAs offer proportional control, which is critical for regulating airflow in medical devices.
+            </p>
+
+            <h2>Technical Implementation</h2>
+            <p>
+                The design process involves calculating the required Lorentz force based on the valve's pressure requirements. I am currently using FEMM (Finite Element Method Magnetics) to simulate the magnetic flux density and optimize the coil winding geometry for maximum efficiency.
+            </p>
+
+            <h2>Challenges & Solutions</h2>
+            <p>
+                <strong>Challenge:</strong> Maintaining a consistent magnetic field throughout the stroke length.<br>
+                <strong>Solution:</strong> Designing a custom iron core geometry to focus the magnetic flux lines directly through the coil path.
+            </p>
+        </div>
+
+        <div class="specs-box">
+            <h3 style="font-family: var(--font-head); margin-bottom: 20px;">Key Specifications</h3>
+            <ul class="specs-list">
+                <li><strong>Role:</strong> <span>Lead Researcher & Designer</span></li>
+                <li><strong>Status:</strong> <span style="color: var(--primary); font-weight: bold;">In Progress (40%)</span></li>
+                <li><strong>Tools Used:</strong> <span>SolidWorks, MATLAB, FEMM</span></li>
+                <li><strong>Timeline:</strong> <span>Jan 2026 - Present</span></li>
+            </ul>
+            
+            <a href="#" style="display: block; text-align: center; background: var(--primary); color: white; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">
+                View Research Paper <i class="fas fa-download"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px; border: none;">Project Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="Design Sketch">
+            <img src="https://images.unsplash.com/photo-1531297461136-82lwDe404323?auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="3D Model">
+            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="Simulation">
+        </div>
+    </div>
+
+    <footer style="background: #222; color: #777; padding: 20px; text-align: center; font-size: 0.8rem;">
+        <p>&copy; 2026 Isuru Wijerathna.</p>
+    </footer>
+
+</body>
+</html>
