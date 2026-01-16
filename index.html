@@ -98,23 +98,25 @@
         }
         .nav-links a:hover::before { width: 100%; }
 
-        /* --- 4. HERO SECTION WITH CIRCUIT BOARD DESIGN --- */
+        /* --- 4. HERO SECTION (UPDATED FOR VISIBILITY) --- */
         #hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             
-            /* --- UPDATED BACKGROUND --- */
+            /* --- FIXED BACKGROUND --- */
             background-color: #ffffff;
             background-image: 
-                /* Blue Glow behind text */
-                radial-gradient(circle at 15% 50%, rgba(9, 132, 227, 0.15) 0%, transparent 50%),
-                /* Soft Fade Overlay */
-                linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(247, 249, 252, 0.95) 100%),
-                /* Circuit Board Pattern */
+                /* 1. Large Blue Glow on the Right (Behind Profile) */
+                radial-gradient(circle at 75% 50%, rgba(9, 132, 227, 0.15) 0%, transparent 50%),
+                
+                /* 2. Left White Fade (Keep text readable) */
+                linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0.0) 100%),
+                
+                /* 3. The Circuit Pattern */
                 url("https://www.transparenttextures.com/patterns/circuit-board.png");
             
-            background-size: cover, cover, 400px; /* 400px scales the circuit pattern size */
+            background-size: cover, cover, 300px; /* Scales the pattern nicely */
             position: relative;
             overflow: hidden;
             padding-top: 80px; 
@@ -273,7 +275,7 @@
             overflow: hidden;
             position: relative;
             border: 8px solid white;
-            box-shadow: 0 20px 60px rgba(9, 132, 227, 0.2); /* Increased glow */
+            box-shadow: 0 20px 60px rgba(9, 132, 227, 0.25); /* Stronger Glow */
             z-index: 2;
         }
 
@@ -283,29 +285,29 @@
             object-fit: cover;
         }
 
-        /* -- Sci-Fi Animated Background Elements -- */
-        /* 1. Spinning Ring (More visible) */
+        /* -- Sci-Fi Animated Background Elements (INCREASED VISIBILITY) -- */
+        /* 1. Spinning Ring */
         .tech-ring {
             position: absolute;
-            width: 530px;
-            height: 530px;
+            width: 550px;
+            height: 550px;
             border-radius: 50%;
-            border: 1px dashed var(--primary);
+            border: 2px dashed var(--primary); /* Thicker border */
             z-index: 1;
             animation: spin 30s linear infinite;
-            opacity: 0.5; /* Increased opacity */
+            opacity: 0.6; /* Increased Opacity */
         }
 
         /* 2. Reverse Spinning Ring */
         .tech-ring-2 {
             position: absolute;
-            width: 620px;
-            height: 620px;
+            width: 650px;
+            height: 650px;
             border-radius: 50%;
-            border: 1px dotted var(--primary);
+            border: 1px solid var(--primary);
             z-index: 0;
             animation: spin-reverse 40s linear infinite;
-            opacity: 0.3; /* Increased opacity */
+            opacity: 0.4; /* Increased Opacity */
         }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
