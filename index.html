@@ -14,7 +14,7 @@
             --primary: #0984e3;      /* Electric Blue */
             --primary-dark: #074e85;
             --bg-color: #f7f9fc;     /* Very light grey/white */
-            --glass: rgba(255, 255, 255, 0.85);
+            --glass: rgba(255, 255, 255, 0.9);
             --text-main: #2d3436;
             --text-light: #636e72;
             --font-head: 'Orbitron', sans-serif; /* Sci-Fi Header Font */
@@ -67,6 +67,7 @@
             backdrop-filter: blur(12px);
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
@@ -97,18 +98,23 @@
         }
         .nav-links a:hover::before { width: 100%; }
 
-        /* --- 4. NEW HERO SECTION (Split Layout) --- */
+        /* --- 4. HERO SECTION WITH CIRCUIT BOARD DESIGN --- */
         #hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* UPDATED: Tech Background with Circuit Board Pattern */
+            
+            /* --- UPDATED BACKGROUND --- */
             background-color: #ffffff;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(9, 132, 227, 0.08) 0%, transparent 50%), /* Blue Glow */
-                linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(247, 249, 252, 0.95) 100%), /* Soft Fade */
-                url("https://www.transparenttextures.com/patterns/circuit-board.png"); /* Circuit Pattern */
-            background-size: cover, cover, 400px; /* Scales the circuit pattern */
+                /* Blue Glow behind text */
+                radial-gradient(circle at 15% 50%, rgba(9, 132, 227, 0.15) 0%, transparent 50%),
+                /* Soft Fade Overlay */
+                linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(247, 249, 252, 0.95) 100%),
+                /* Circuit Board Pattern */
+                url("https://www.transparenttextures.com/patterns/circuit-board.png");
+            
+            background-size: cover, cover, 400px; /* 400px scales the circuit pattern size */
             position: relative;
             overflow: hidden;
             padding-top: 80px; 
@@ -263,11 +269,11 @@
         .hero-img-box {
             width: 450px;
             height: 450px;
-            border-radius: 50%; /* Circle shape like example */
+            border-radius: 50%;
             overflow: hidden;
             position: relative;
             border: 8px solid white;
-            box-shadow: 0 20px 60px rgba(9, 132, 227, 0.15); /* Soft blue glow */
+            box-shadow: 0 20px 60px rgba(9, 132, 227, 0.2); /* Increased glow */
             z-index: 2;
         }
 
@@ -277,29 +283,29 @@
             object-fit: cover;
         }
 
-        /* -- Sci-Fi Animated Background Elements (The "Actions") -- */
-        /* 1. Spinning Ring */
+        /* -- Sci-Fi Animated Background Elements -- */
+        /* 1. Spinning Ring (More visible) */
         .tech-ring {
             position: absolute;
-            width: 520px;
-            height: 520px;
+            width: 530px;
+            height: 530px;
             border-radius: 50%;
-            border: 1px dashed var(--primary); /* Dashed line for tech look */
+            border: 1px dashed var(--primary);
             z-index: 1;
             animation: spin 30s linear infinite;
-            opacity: 0.3;
+            opacity: 0.5; /* Increased opacity */
         }
 
         /* 2. Reverse Spinning Ring */
         .tech-ring-2 {
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 620px;
+            height: 620px;
             border-radius: 50%;
-            border: 1px dotted var(--primary); /* Changed to primary color for consistency */
+            border: 1px dotted var(--primary);
             z-index: 0;
             animation: spin-reverse 40s linear infinite;
-            opacity: 0.15;
+            opacity: 0.3; /* Increased opacity */
         }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -367,20 +373,20 @@
         /* --- 7. NEW PROJECTS SECTION WITH IMAGES --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px; /* Softer corners */
-            overflow: hidden; /* Ensures image stays inside rounded corners */
+            border-radius: 15px; 
+            overflow: hidden; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: var(--transition);
             position: relative;
             border: 1px solid rgba(0,0,0,0.05);
             display: flex;
-            flex-direction: column; /* Stacks image and text vertically */
+            flex-direction: column; 
         }
 
         .project-card:hover {
@@ -389,10 +395,9 @@
             border-color: var(--primary);
         }
 
-        /* New Image Area */
         .project-img-wrapper {
             width: 100%;
-            height: 200px; /* Fixed height for uniformity */
+            height: 200px; 
             overflow: hidden;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -400,18 +405,17 @@
         .project-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures image covers the area without stretching */
+            object-fit: cover; 
             transition: transform 0.5s ease;
         }
 
-        /* Subtle zoom effect on hover */
         .project-card:hover .project-img-wrapper img {
             transform: scale(1.05);
         }
 
         .project-content { 
             padding: 25px; 
-            flex-grow: 1; /* Ensures content fills remaining space */
+            flex-grow: 1; 
             display: flex;
             flex-direction: column;
         }
@@ -424,7 +428,7 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.5px;
-            margin-top: auto; /* Pushes tags to the bottom */
+            margin-top: auto; 
         }
 
         /* --- 8. CONTACT SECTION --- */
@@ -470,7 +474,7 @@
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2.5rem; }
             .about-grid, .contact-container { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Simplified mobile nav for demo */
+            .nav-links { display: none; } 
         }
     </style>
 </head>
