@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Profile | Isuru Wijerathna</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* --- COPYING CORE THEME FROM INDEX.HTML --- */
+        :root {
+            --primary: #0984e3;      
+            --primary-dark: #074e85;
+            --bg-color: #f7f9fc;     
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --font-head: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.4s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION (Simplified for Profile Page) --- */
+        nav {
+            padding: 20px 0;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-head); font-weight: 700; color: var(--text-main); text-decoration: none; font-size: 1.2rem; }
+        .logo span { color: var(--primary); }
+        .back-btn { text-decoration: none; color: var(--text-main); font-weight: 500; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .back-btn:hover { color: var(--primary); transform: translateX(-5px); }
+
+        /* --- PROFILE LAYOUT --- */
+        .profile-header {
+            background: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid #e1e8ef;
+            background-image: radial-gradient(circle at 50% 50%, rgba(9, 132, 227, 0.05) 0%, transparent 70%);
+        }
+
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            padding: 5px;
+            border: 2px dashed var(--primary);
+            position: relative;
+        }
+        
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .profile-name { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 10px; }
+        .profile-title { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .profile-uni { color: var(--text-light); font-size: 1.1rem; }
+
+        /* --- CONTENT GRID --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 50px 0;
+        }
+
+        /* LEFT COLUMN */
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            height: fit-content;
+        }
+        
+        .info-item { margin-bottom: 25px; }
+        .info-label { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-light); font-weight: 700; margin-bottom: 5px; }
+        .info-value { font-size: 1rem; color: var(--text-main); font-weight: 500; }
+        .info-value i { color: var(--primary); width: 25px; }
+
+        /* RIGHT COLUMN */
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 2px; background: #e1e8ef; }
+
+        /* TIMELINE */
+        .timeline { position: relative; padding-left: 30px; border-left: 2px solid #e1e8ef; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-dot { 
+            position: absolute; left: -36px; top: 0; 
+            width: 14px; height: 14px; 
+            background: white; border: 3px solid var(--primary); 
+            border-radius: 50%; 
+        }
+        .timeline-date { font-size: 0.85rem; color: var(--primary); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; display: inline-block; background: rgba(9, 132, 227, 0.1); padding: 2px 10px; border-radius: 10px; }
+        .timeline-head { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .timeline-sub { font-size: 0.95rem; color: #555; font-style: italic; margin-bottom: 10px; }
+        .timeline-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        .gpa-badge {
+            display: inline-block;
+            background: #2d3436;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* INTEREST GRID */
+        .interest-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .interest-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e1e8ef;
+            transition: var(--transition);
+        }
+        .interest-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(9, 132, 227, 0.1); }
+        .interest-icon { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+        .interest-name { font-weight: 700; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .profile-name { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">ISURU <span>WIJERATHNA</span></a>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="profile-header">
+        <div class="container">
+            <div class="profile-img-container">
+                <img src="about.png" alt="Isuru Wijerathna">
+            </div>
+            <h1 class="profile-name">Isuru Wijerathna</h1>
+            <div class="profile-title">Mechatronics Engineering Undergraduate</div>
+            <div class="profile-uni">University of Peradeniya, Sri Lanka</div>
+        </div>
+    </section>
+
+    <div class="container content-grid">
+        
+        <aside>
+            <div class="info-card">
+                <div class="info-item">
+                    <span class="info-label">Address</span>
+                    <div class="info-value">
+                        71/100 Pallama,<br>
+                        Metihakka, Matale,<br>
+                        Central, Sri Lanka<br>
+                        Postal: 21066
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Email & Phone</span>
+                    <div class="info-value">
+                        <i class="fas fa-envelope"></i> xpisuru@gmail.com<br>
+                        <i class="fas fa-phone"></i> +94 71 464 412
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Languages</span>
+                    <div class="info-value">English, Sinhala</div>
+                </div>
+
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="#" class="back-btn" style="justify-content: center; color: var(--primary); border: 1px solid var(--primary); padding: 10px; border-radius: 5px;">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            
+            <h2 class="section-title">Education Journey</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Current</span>
+                    <h3 class="timeline-head">University of Peradeniya</h3>
+                    <div class="timeline-sub">Department of Mechanical Engineering</div>
+                    <p class="timeline-desc">
+                        Reading for <strong>BSc. Hons in Mechanical Engineering</strong>.<br>
+                        Specializing in <strong>Mechatronics</strong>.
+                    </p>
+                    <div style="margin-top: 10px;">
+                        <span class="gpa-badge">Current GPA: 3.3</span>
+                    </div>
+                    <ul style="margin-top: 10px; font-size: 0.9rem; color: #555; padding-left: 20px;">
+                        <li>MES Batch Representative (2026)</li>
+                        <li>Member - Peradeniya Engineering Students' Union</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Secondary Education</span>
+                    <h3 class="timeline-head">St. Thomas' College, Matale</h3>
+                    <div class="timeline-sub">G.C.E Advanced Level</div>
+                    <p class="timeline-desc">
+                        Successfully completed secondary education with a focus on Physical Sciences, laying the foundation for engineering studies.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Primary Education</span>
+                    <h3 class="timeline-head">Kaikawela Primary School</h3>
+                    <div class="timeline-sub">Matale</div>
+                    <p class="timeline-desc">
+                        Early education and foundation.
+                    </p>
+                </div>
+
+            </div>
+
+            <h2 class="section-title">Professional Interests</h2>
+            <div class="interest-grid">
+                
+                <div class="interest-card">
+                    <div class="interest-icon"><i class="fas fa-industry"></i></div>
+                    <div class="interest-name">Industrial Automation</div>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon"><i class="fas fa-robot"></i></div>
+                    <div class="interest-name">Robotics & IoT</div>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon"><i class="fas fa-car"></i></div>
+                    <div class="interest-name">Automobile Engineering</div>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="interest-name">Mechanical Design</div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <footer style="background: white; border-top: 1px solid #e1e8ef; color: #777; padding: 20px; text-align: center; font-size: 0.8rem; margin-top: 40px;">
+        <p>&copy; 2026 Isuru Wijerathna. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
