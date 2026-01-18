@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arunella Initiative | Isuru Wijerathna</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- REUSING YOUR CORE VARIABLES --- */
+        :root {
+            --primary: #0984e3;      
+            --bg-color: #f7f9fc;    
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --font-head: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { color: var(--primary); transform: translateX(-5px); }
+        .logo { font-family: var(--font-head); font-weight: 700; color: var(--text-main); font-size: 1.2rem;}
+        .logo span { color: var(--primary); }
+
+        /* --- HERO TITLE --- */
+        .project-hero {
+            background: linear-gradient(rgba(9, 132, 227, 0.05), rgba(9, 132, 227, 0.05)), white;
+            padding: 80px 0 50px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+        .meta-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- STORY SECTION --- */
+        .story-section { padding: 60px 0; max-width: 800px; margin: 0 auto; }
+        .story-content { font-size: 1.1rem; color: var(--text-light); text-align: justify; }
+        .story-content p { margin-bottom: 20px; }
+        
+        /* --- GALLERY SECTION --- */
+        .gallery-section { padding: 50px 0 100px 0; }
+        h2 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 0; 
+            width: 100%; height: 3px; background: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        
+        .gallery-item:hover { transform: scale(1.03); border-color: var(--primary); }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer { background: #222; color: #777; padding: 20px; text-align: center; font-size: 0.8rem; margin-top: auto;}
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="logo">ISURU <span>WIJERATHNA</span></div>
+        </div>
+    </header>
+
+    <section class="project-hero">
+        <div class="container">
+            <h1>'Arunella' Social Service</h1>
+            <div class="meta-tags">
+                <span class="tag">Community Service</span>
+                <span class="tag">Education</span>
+                <span class="tag">Event Management</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <p>
+                    <strong>The Mission:</strong> "Arunella" is a dedicated social service initiative aimed at uplifting underprivileged student communities. As an active member, I realized that engineering isn't just about machines—it's about building foundations for people.
+                </p>
+                <p>
+                    <strong>O/L Seminar Series:</strong> We identified a gap in educational resources for students preparing for their Ordinary Level examinations in rural areas. Our team organized a comprehensive seminar series, bringing in expert teachers to conduct crash courses in Mathematics, Science, and English.
+                </p>
+                <p>
+                    <strong>Fundraising & Musical Shows:</strong> To fund these educational projects, we moved beyond simple donations. We organized large-scale musical shows and entertainment events. My role involved logistics management, coordinating with artists, and handling the technical setup (lighting and sound), ensuring the events were profitable enough to sustain our long-term educational goals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2>Event Gallery</h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="arunella/1.jpg" alt="Seminar">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="arunella/2.jpg" alt="Teaching">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/3.jpg" alt="Crowd">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/4.jpg" alt="Event">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/5.jpg" alt="Teamwork">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/6.jpg" alt="Classroom">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/7.jpg" alt="Planning">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/8.jpg" alt="Sports">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/9.jpg" alt="Community">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/10.jpg" alt="Success">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="arunella/11.jpg" alt="Success">
+                </div>  
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Isuru Wijerathna. Built for the Community.</p>
+    </footer>
+
+</body>
+</html>
